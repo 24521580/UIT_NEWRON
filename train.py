@@ -51,7 +51,7 @@ processor = Blip2Processor.from_pretrained(MODEL_NAME)
 def preprocess_function(example):
     # Load image (dataset stores image_id; we assume images are downloaded or use HF image field if present)
     # For Kaggle, images are expected in /kaggle/input/kvasir-images/{image_id}.jpg - adjust if needed
-    img_path = f"/kaggle/input/kvasir-images/{example['image_id']}.jpg"
+    img_path = f"/kaggle/input/kvasir-images/{example['img_id']}.jpg"
     if not os.path.exists(img_path):
         # Fallback: if image column exists in dataset
         image = example["image"].convert("RGB") if "image" in example else Image.new("RGB", (224, 224))
